@@ -41,6 +41,15 @@
 {#await getallfortniteskins()}
 	<p>กำลังโหลดข้อมูล...</p>
 {:then posts}
+<div class="container-sm max-sm:hidden">
+    sm
+</div>
+<div class="container-md max-md:hidden">
+    md
+</div>
+<div class="container-lg max-lg:hidden">
+    lg
+</div>
 <div class="container mx-auto p-4 text-white">
     <div class="grid grid-cols-4 gap-4">
         {#each posts as post}
@@ -169,8 +178,9 @@
                     {#if post.colors.color2}
                         <div class="relative col-span-2 md:col-span-4 w-full rounded-lg">
                             <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
-                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
-                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                <span class="justify-self-end max-md:hidden rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
                                 {#each post.newDisplayAsset.renderImages as bgimage}
