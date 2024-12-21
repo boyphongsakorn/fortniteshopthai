@@ -92,10 +92,10 @@
                 {:else if post.tileSize == 'Size_2_x_1'}
                     {#if post.colors.color2}
                         <div class="relative col-span-2 aspect-[1/.76] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
-                            <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
+                            <div class="grid justify-items-stretch inline-grid grid-cols-3 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
-                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {/if}
@@ -173,11 +173,11 @@
                                 </div>
                             {/each}
                         </Carousel>
-                        <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
-                            <span class="ml-4">
+                        <div class="absolute inset-x-0 bottom-0 max-sm:py1 py-4 rounded-b-lg backdrop-blur-md">
+                            <span class="max-sm:text-sm ml-4">
                                 {post.bundle.name}
                             </span>
-                            <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
+                            <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
                         </div>
                     </div>
                         <!--div class="relative col-span-4 aspect-[1/.38625] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
@@ -193,14 +193,14 @@
                             </div>
                         </div-->
                     {:else}
-                        <div class="relative col-span-4 w-full rounded-lg">
-                            <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
+                        <div class="relative col-span-2 md:col-span-4 w-full rounded-lg">
+                            <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
                                 {#each post.newDisplayAsset.renderImages as bgimage}
-                                    <div class="aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                     </div>
                                 {/each}
                             </Carousel>
@@ -232,9 +232,9 @@
                             <div class="relative col-span-2 aspect-[1/1] md:aspect-[1/.76] rounded-lg" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-3 w-full">
                                     {#if post.banner?.backendValue == 'New'}
-                                    <span class="justify-self-start max-sm:hidden rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
+                                    <span class="justify-self-start max-sm:text-sm max-sm:truncate rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
                                     <span class="justify-self-end max-sm:hidden col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
-                                    <span class="justify-self-end col-span-3 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                    <span class="justify-self-end col-span-2 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {:else}
                                     <span class="justify-self-end col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                     {/if}
