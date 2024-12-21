@@ -47,15 +47,15 @@
             {#if post.bundle}
                 {#if post.tileSize == 'Size_1_x_1'}
                     {#if post.colors.color2}
-                        <div class="relative col-span-1 aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <div class="relative col-span-2 md:col-span-1 max-sm:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
                                 {:else if post.regularPrice-post.finalPrice > 0}
-                                <span class="justify-self-start col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
-                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
+                                <span class="justify-self-start col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
+                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {:else}
-                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
                             </div>
                             <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     {:else}
-                        <div class="relative col-span-1 aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <div class="relative col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
@@ -173,7 +173,7 @@
                                     </div>
                                 {/each}
                             </Carousel>
-                            <div class="absolute inset-x-0 bottom-0 max-sm:py1 py-4 rounded-b-lg backdrop-blur-md">
+                            <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
                                 <span class="max-sm:text-sm ml-4">
                                     {post.bundle.name}
                                 </span>
@@ -236,11 +236,12 @@
                                     <span class="justify-self-end max-md:hidden col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                     <span class="justify-self-end col-span-2 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {:else}
-                                    <span class="justify-self-end col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-end max-md:hidden col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-end col-span-3 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {/if}
                                 </div>
-                                <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
-                                    <span class="ml-4">
+                                <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
+                                    <span class="max-md:text-sm ml-4">
                                         {#if post.brItems}
                                             {post.brItems[0].name}
                                         {/if}
@@ -248,21 +249,23 @@
                                             {post.instruments[0].name}
                                         {/if}
                                     </span>
-                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 </div>
                             </div>
                         {:else}
-                            <div class="relative col-span-2 aspect-[1/.76] rounded-lg" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                            <div class="relative col-span-2 aspect-[1/1] md:aspect-[1/.76] rounded-lg" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-3 w-full">
                                     {#if post.banner?.backendValue == 'New'}
-                                    <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
-                                    <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-start max-sm:text-sm max-sm:truncate rounded-lg bg-yellow-300 m-2 px-2 py-1 md:text-lg font-bold text-black">มาใหม่!</span>
+                                    <span class="justify-self-end max-md:hidden col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-end col-span-2 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {:else}
-                                    <span class="justify-self-end col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-end max-md:hidden col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-end col-span-3 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {/if}
                                 </div>
-                                <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
-                                    <span class="ml-4">
+                                <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
+                                    <span class="max-md:text-sm ml-4">
                                         {#if post.brItems}
                                             {post.brItems[0].name}
                                         {/if}
@@ -270,23 +273,23 @@
                                             {post.instruments[0].name}
                                         {/if}
                                     </span>
-                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 </div>
                             </div>
                         {/if}
                     {:else}
                         {#if post.colors.color2}
-                            <div class="relative h-full rounded-lg aspect-[.627]" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                            <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                     {#if post.banner?.backendValue == 'New'}
-                                    <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
-                                    <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                    <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
+                                    <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {:else}
-                                    <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                    <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {/if}
                                 </div>
-                                <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
-                                    <span class="ml-4">
+                                <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
+                                    <span class="max-md:text-sm ml-4">
                                         {#if post.brItems}
                                             {post.brItems[0].name}
                                         {/if}
@@ -294,7 +297,7 @@
                                             {post.instruments[0].name}
                                         {/if}
                                     </span>
-                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 </div>
                             </div>
                         {:else}
@@ -323,18 +326,18 @@
                     {/if}
                 {:else}
                     {#if post.colors }
-                        <div class="relative max-sm:aspect-[1/1] max-sm:col-span-2 h-full rounded-lg" style="background: linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: top;">
-                            <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
+                        <div class="relative max-md:aspect-[1/1] max-md:col-span-2 h-full rounded-lg" style="background: linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: top;">
+                            <div class="absolute grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
-                                <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
-                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
+                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {:else}
-                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
                             </div>
                             <img class="rounded-lg p-2" src={post.tracks[0].albumArt} alt={post.tracks[0].title} />
                             <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
-                                <span class="ml-4">
+                                <span class="max-md:text-sm ml-4">
                                     {post.tracks[0].title}
                                 </span>
                                 <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
