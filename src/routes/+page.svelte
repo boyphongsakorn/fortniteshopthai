@@ -53,7 +53,7 @@
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
                                 {:else if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
-                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDateAndShortYear(post.outDate)}</span>
+                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
@@ -72,7 +72,7 @@
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
                                 {:else if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
-                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDateAndShortYear(post.outDate)}</span>
+                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
