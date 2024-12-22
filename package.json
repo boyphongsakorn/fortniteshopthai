@@ -25,6 +25,7 @@
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
-		"svelte-carousel": "^1.0.25"
+		"svelte-carousel": "^1.0.25",
+		"vanilla-lazyload": "^19.1.3"
 	}
 }
