@@ -17,13 +17,15 @@
         //remove all layout.name == 'Jam Tracks'
         data.data.entries = data.data.entries.filter(item => item.layout.name !== 'Jam Tracks' && item.layout.name !== 'OG Season Shop');
         console.log(data.data.entries);
+        const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop');
+        let data2 = await res2.json();
+        for (let i = 0; i < data.data.entries.length; i++) {
+            //find webUrl by offerId in array data2.shop
+            // data2.shop = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId);
+            // return data.shop.webURL;
+            data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
+        }
         return data.data.entries;
-
-        // const res = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop');
-        // let data = await res.json();
-        // //reorder data.shop from bottom to top
-        // data.shop = data.shop.reverse();
-        // return data.shop;
     }
 
     function thaiDate(date) {
@@ -110,7 +112,7 @@
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:hidden truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
                                 <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg xl:hidden truncate font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
-                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 max-xl:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 max-xl:hidden text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 sm:text-sm md:hidden text-lg font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
@@ -198,7 +200,7 @@
                     {/if}
                 {:else}
                     {#if post.colors.color2}
-                        <div class="relative col-span-2 md:col-span-4 w-full rounded-lg">
+                        <a class="relative col-span-2 md:col-span-4 w-full rounded-lg" href={post.webURL}>
                             <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 <span class="justify-self-end max-md:hidden rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
@@ -216,7 +218,7 @@
                                 </span>
                                 <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
                             </div>
-                        </div>
+                        </a>
                         <!--div class="relative col-span-4 aspect-[1/.38625] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -230,7 +232,7 @@
                             </div>
                         </div-->
                     {:else}
-                        <div class="relative col-span-2 md:col-span-4 w-full rounded-lg">
+                        <a class="relative col-span-2 md:col-span-4 w-full rounded-lg" href={post.webURL}>
                             <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 <span class="justify-self-end max-md:hidden rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
@@ -248,7 +250,7 @@
                                 </span>
                                 <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
                             </div>
-                        </div>
+                        </a>
                         <!--div class="relative col-span-4 aspect-[1/.38625] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
