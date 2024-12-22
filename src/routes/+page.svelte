@@ -2,6 +2,7 @@
     import Carousel from 'svelte-carousel';
 
     async function getallfortniteskins() {
+        // old
         const res = await fetch('https://fortnite-api.com/v2/shop');
         let data = await res.json();
         //console.log(data);
@@ -17,6 +18,12 @@
         data.data.entries = data.data.entries.filter(item => item.layout.name !== 'Jam Tracks' && item.layout.name !== 'OG Season Shop');
         console.log(data.data.entries);
         return data.data.entries;
+
+        // const res = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop');
+        // let data = await res.json();
+        // //reorder data.shop from bottom to top
+        // data.shop = data.shop.reverse();
+        // return data.shop;
     }
 
     function thaiDate(date) {
