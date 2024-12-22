@@ -56,15 +56,15 @@
             {#if post.bundle}
                 {#if post.tileSize == 'Size_1_x_1'}
                     {#if post.colors.color2}
-                        <div class="relative col-span-2 md:col-span-1 max-sm:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <div class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
                                 {:else if post.regularPrice-post.finalPrice > 0}
-                                <span class="justify-self-start col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
-                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
+                                <span class="justify-self-start col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg max-lg:text-sm truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
+                                <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg max-lg:text-sm truncate font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {:else}
-                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg max-md:text-sm font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
                             </div>
                             <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     {:else}
-                        <div class="relative col-span-2 md:col-span-1 max-sm:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <div class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
@@ -83,7 +83,7 @@
                                 <span class="justify-self-start col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
                                 <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {:else}
-                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg max-sm:text-sm font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg max-md:text-sm font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
                             </div>
                             <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
@@ -100,16 +100,16 @@
                     {/if}
                 {:else if post.tileSize == 'Size_2_x_1'}
                     {#if post.colors.color2}
-                        <div class="relative col-span-2 max-sm:aspect-[1/1] aspect-[1/.76] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <div class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-sm:hidden text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-sm:hidden text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:hidden truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
                                 <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg xl:hidden truncate font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 max-xl:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 sm:text-sm md:hidden text-lg font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
-                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-sm:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {/if}
                             </div>
                             <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
@@ -124,14 +124,14 @@
                             </div>
                         </div>
                     {:else}
-                        <div class="relative col-span-2 max-sm:aspect-[1/1] aspect-[1/.76] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <div class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {:else}
-                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 sm:text-sm md:hidden text-lg font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
-                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-sm:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-sm md:hidden font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {/if}
                             </div>
                             <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
@@ -148,13 +148,13 @@
                     {/if}
                 {:else if post.tileSize == 'Size_3_x_1'}
                     {#if post.colors.color2}
-                        <div class="relative max-sm:col-span-2 col-span-3 max-sm:aspect-[1/1] aspect-[1/.516] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
+                        <div class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {:else}
-                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-sm:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {/if}
                             </div>
@@ -170,8 +170,26 @@
                             </div>
                         </div>
                     {:else}
-                        <div class="col-span-3 aspect-[1/.516] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
-                            {post.bundle.name}
+                        <div class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
+                            <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
+                                {#if post.regularPrice-post.finalPrice > 0}
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                {:else}
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
+                                {/if}
+                            </div>
+                            <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
+                                <span class="ml-4">
+                                    {post.bundle.name}
+                                </span>
+                                {#if post.regularPrice-post.finalPrice > 0}
+                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
+                                {:else}
+                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                {/if}
+                            </div>
                         </div>
                     {/if}
                 {:else}
@@ -179,7 +197,7 @@
                         <div class="relative col-span-2 md:col-span-4 w-full rounded-lg">
                             <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
-                                <span class="justify-self-end max-md:hidden rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end max-md:hidden rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 <span class="justify-self-end md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
@@ -210,8 +228,8 @@
                     {:else}
                         <div class="relative col-span-2 md:col-span-4 w-full rounded-lg">
                             <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
-                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
-                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
                                 {#each post.newDisplayAsset.renderImages as bgimage}
