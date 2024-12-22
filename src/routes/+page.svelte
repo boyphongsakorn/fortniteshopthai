@@ -58,14 +58,14 @@
                                 <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-lg max-md:text-sm font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
                             </div>
-                            <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
+                            <div class="absolute inset-x-0 bottom-0 py-1 md:py-4 rounded-b-lg backdrop-blur-md">
                                 <span class="ml-4">
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
+                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
                                 {:else}
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 {/if}
                             </div>
                         </div>
