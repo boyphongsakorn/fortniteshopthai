@@ -1,7 +1,6 @@
 <script>
     import { page } from '$app/stores';
     import Carousel from 'svelte-carousel';
-    import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
 
     const out = $page.url.searchParams.get('out');
 
