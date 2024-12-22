@@ -1,5 +1,9 @@
 <script>
+    import { page } from '$app/stores';
     import Carousel from 'svelte-carousel';
+    import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
+
+    const out = $page.url.searchParams.get('out');
 
     async function getallfortniteskins() {
         // old
@@ -25,6 +29,10 @@
             // return data.shop.webURL;
             data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
         }
+        if (out) {
+            //get only item that outDate is today by outDate == today
+            data.data.entries = data.data.entries.filter(item => item.outDate.slice(0, 10) == new Date().toISOString().slice(0, 10));
+        }
         return data.data.entries;
     }
 
@@ -46,6 +54,9 @@
     let innerWidth = 0
 </script>
 <svelte:window bind:innerWidth/>
+
+
+
 <!--h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p-->
 
@@ -53,6 +64,18 @@
 	<p>กำลังโหลดข้อมูล...</p>
 {:then posts}
 <div class="container mx-auto p-4 text-white">
+    {#if out}
+    <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex" href="/" on:click="{() => window.location.href = '/'}">
+        ของที่จะออกพรุ่งนี้
+        <svg fill="none" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+            <path xmlns="http://www.w3.org/2000/svg" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#0D0D0D"></path>
+        </svg>
+    </a>
+    {:else}
+    <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex" href="/?out=true" on:click="{() => window.location.href = '/?out=true'}">
+        ของที่จะออกพรุ่งนี้
+    </a>
+    {/if}
     <div class="grid grid-cols-4 gap-4">
         {#each posts as post}
             {#if post.bundle}
