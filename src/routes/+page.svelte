@@ -41,15 +41,6 @@
 {#await getallfortniteskins()}
 	<p>กำลังโหลดข้อมูล...</p>
 {:then posts}
-<div class="container-sm max-sm:hidden">
-    sm
-</div>
-<div class="container-md max-md:hidden">
-    md
-</div>
-<div class="container-lg max-lg:hidden">
-    lg
-</div>
 <div class="container mx-auto p-4 text-white">
     <div class="grid grid-cols-4 gap-4">
         {#each posts as post}
@@ -71,7 +62,11 @@
                                 <span class="ml-4">
                                     {post.bundle.name}
                                 </span>
+                                {#if post.regularPrice-post.finalPrice > 0}
                                 <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
+                                {:else}
+                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                {/if}
                             </div>
                         </div>
                     {:else}
