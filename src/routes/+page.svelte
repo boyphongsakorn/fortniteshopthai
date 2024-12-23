@@ -20,15 +20,22 @@
         //remove all layout.name == 'Jam Tracks'
         data.data.entries = data.data.entries.filter(item => item.layout.name !== 'Jam Tracks' && item.layout.name !== 'OG Season Shop');
         console.log(data.data.entries);
-        const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop');
-        let data2 = await res2.json();
-        for (let i = 0; i < data.data.entries.length; i++) {
-            //find webUrl by offerId in array data2.shop
-            // data2.shop = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId);
-            // return data.shop.webURL;
-            if (data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL) {
-                data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
-            } else {
+        try {
+            const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop');
+            let data2 = await res2.json();
+            for (let i = 0; i < data.data.entries.length; i++) {
+                //find webUrl by offerId in array data2.shop
+                // data2.shop = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId);
+                // return data.shop.webURL;
+                if (data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL) {
+                    data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
+                } else {
+                    data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
+                }
+            }
+        } catch (error) {
+            //add "https://www.fortnite.com/item-shop?creator-code=boyalone99" to every data.data.entries
+            for (let i = 0; i < data.data.entries.length; i++) {
                 data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
             }
         }
