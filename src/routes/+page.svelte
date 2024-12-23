@@ -362,6 +362,9 @@
                                         {#if post.instruments}
                                             {post.instruments[0].name}
                                         {/if}
+                                        {#if post.legoKits}
+                                            {post.legoKits[0].name}
+                                        {/if}
                                     </span>
                                     <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 </div>
@@ -383,6 +386,9 @@
                                         {/if}
                                         {#if post.instruments}
                                             {post.instruments[0].name}
+                                        {/if}
+                                        {#if post.legoKits}
+                                            {post.legoKits[0].name}
                                         {/if}
                                     </span>
                                     <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
