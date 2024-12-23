@@ -84,7 +84,7 @@
             {#if post.bundle}
                 {#if post.tileSize == 'Size_1_x_1'}
                     {#if post.colors.color2}
-                        <div class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
@@ -105,9 +105,9 @@
                                 <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 {/if}
                             </div>
-                        </div>
+                        </a>
                     {:else}
-                        <div class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
@@ -128,11 +128,11 @@
                                 <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 {/if}
                             </div>
-                        </div>
+                        </a>
                     {/if}
                 {:else if post.tileSize == 'Size_2_x_1'}
                     {#if post.colors.color2}
-                        <div class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -154,9 +154,9 @@
                                 <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 {/if}
                             </div>
-                        </div>
+                        </a>
                     {:else}
-                        <div class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -176,7 +176,7 @@
                                 <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 {/if}
                             </div>
-                        </div>
+                        </a>
                     {/if}
                 {:else if post.tileSize == 'Size_3_x_1'}
                     {#if post.colors.color2}
@@ -295,7 +295,7 @@
                 {#if post.newDisplayAsset}
                     {#if post.tileSize == 'Size_2_x_1'}
                         {#if post.colors.color2}
-                            <div class="relative col-span-2 aspect-[1/1] md:aspect-[1/.76] rounded-lg" style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                            <a class="relative col-span-2 aspect-[1/1] md:aspect-[1/.76] rounded-lg" href={post.webURL} style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-3 w-full">
                                     {#if post.banner?.backendValue == 'New'}
                                     <span class="justify-self-start max-sm:text-sm max-sm:truncate rounded-lg bg-yellow-300 m-2 px-2 py-1 md:text-lg font-bold text-black">มาใหม่!</span>
@@ -317,9 +317,9 @@
                                     </span>
                                     <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 </div>
-                            </div>
+                            </a>
                         {:else}
-                            <div class="relative col-span-2 aspect-[1/1] md:aspect-[1/.76] rounded-lg" style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                            <a class="relative col-span-2 aspect-[1/1] md:aspect-[1/.76] rounded-lg" href={post.webURL} style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-3 w-full">
                                     {#if post.banner?.backendValue == 'New'}
                                     <span class="justify-self-start max-sm:text-sm max-sm:truncate rounded-lg bg-yellow-300 m-2 px-2 py-1 md:text-lg font-bold text-black">มาใหม่!</span>
@@ -341,7 +341,7 @@
                                     </span>
                                     <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 </div>
-                            </div>
+                            </a>
                         {/if}
                     {:else}
                         {#if post.colors.color2}
