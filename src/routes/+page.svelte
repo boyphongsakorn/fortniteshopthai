@@ -180,7 +180,7 @@
                     {/if}
                 {:else if post.tileSize == 'Size_3_x_1'}
                     {#if post.colors.color2}
-                        <div class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
+                        <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -200,9 +200,9 @@
                                 <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 {/if}
                             </div>
-                        </div>
+                        </a>
                     {:else}
-                        <div class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
+                        <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -222,7 +222,7 @@
                                 <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 {/if}
                             </div>
-                        </div>
+                        </a>
                     {/if}
                 {:else}
                     {#if post.colors.color2}
