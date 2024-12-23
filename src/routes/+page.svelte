@@ -26,7 +26,11 @@
             //find webUrl by offerId in array data2.shop
             // data2.shop = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId);
             // return data.shop.webURL;
-            data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
+            if (data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL) {
+                data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
+            } else {
+                data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
+            }
         }
         if (out) {
             //get only item that outDate is today by outDate == today
