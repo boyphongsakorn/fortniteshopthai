@@ -27,15 +27,15 @@
                 //find webUrl by offerId in array data2.shop
                 // data2.shop = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId);
                 // return data.shop.webURL;
-                if (data.data.entries[i].offerId == 'v2:/0c41a588f769cf586357ce021a8ec56ed60f058ea9d1373dee02498cecfaf3d0'){
-                    data.data.entries[i].video = 'https://fnggcdn.com/items/3737/video.mp4?4';
-                }
                 if (data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL) {
                     data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
                     data.data.entries[i].video = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].video;
                 } else {
                     data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
                     data.data.entries[i].video = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].video;
+                }
+                if (data.data.entries[i].offerId == 'v2:/0c41a588f769cf586357ce021a8ec56ed60f058ea9d1373dee02498cecfaf3d0'){
+                    data.data.entries[i].video = 'https://fnggcdn.com/items/3737/video.mp4?4';
                 }
             }
         } catch (error) {
@@ -358,7 +358,6 @@
                         {/if}
                     {:else}
                         {#if post.colors.color2}
-                            {post.video}
                             <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                     {#if post.banner?.backendValue == 'New'}
