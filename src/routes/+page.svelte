@@ -21,9 +21,7 @@
         data.data.entries = data.data.entries.filter(item => item.layout.name !== 'Jam Tracks' && item.layout.name !== 'OG Season Shop');
         console.log(data.data.entries);
         try {
-            //const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop', {signal : AbortSignal.timeout(12000)});
-            //let data2 = await res2.json();
-            const res2 = await fetch('https://raw.githubusercontent.com/boyphongsakorn/lotto-cron/refs/heads/master/fortniteitemshop.json');
+            const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop', {signal : AbortSignal.timeout(12000)});
             let data2 = await res2.json();
             for (let i = 0; i < data.data.entries.length; i++) {
                 //find webUrl by offerId in array data2.shop
