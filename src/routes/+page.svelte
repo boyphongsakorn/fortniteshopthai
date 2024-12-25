@@ -27,7 +27,7 @@
                 //find webUrl by offerId in array data2.shop
                 // data2.shop = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId);
                 // return data.shop.webURL;
-                if (data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL) {
+                if (data2.shop.filter(item => item.offerId == data.data.entries[i].offerId).length > 0) {
                     data.data.entries[i].webURL = "https://www.fortnite.com"+data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].webURL+"?creator-code=boyalone99";
                     data.data.entries[i].video = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].video.split('?')[0];
                 } else {
@@ -39,7 +39,7 @@
             //add "https://www.fortnite.com/item-shop?creator-code=boyalone99" to every data.data.entries
             for (let i = 0; i < data.data.entries.length; i++) {
                 data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
-                data.data.entries[i].video = '';
+                data.data.entries[i].video = "";
             }
         }
         if (out) {
