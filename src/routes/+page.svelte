@@ -70,6 +70,15 @@
         return new Date(date).toLocaleDateString('th-TH').slice(0, 6) + '' + (new Date(date).getFullYear() + 543).toString().slice(2, 4);
     }
 
+    function shopout() {
+        //if less 7 hours to 00:00 (UTC time) return วันนี้
+        if (new Date().getUTCHours() >= 17) {
+            return 'วันนี้';
+        } else {
+            return 'พรุ่งนี้';
+        }
+    }
+
     let innerWidth = 0
 </script>
 <svelte:window bind:innerWidth/>
@@ -83,18 +92,27 @@
 	<p>กำลังโหลดข้อมูล...</p>
 {:then posts}
 <div class="container mx-auto p-4 text-white">
-    {#if out}
-    <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex" href="/" on:click="{() => window.location.href = '/'}">
-        ของที่จะออกพรุ่งนี้
-        <svg fill="none" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
-            <path xmlns="http://www.w3.org/2000/svg" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#0D0D0D"></path>
-        </svg>
-    </a>
-    {:else}
-    <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex" href="/?out=true" on:click="{() => window.location.href = '/?out=true'}">
-        ของที่จะออกพรุ่งนี้
-    </a>
-    {/if}
+    <div class="grid grid-cols-2">
+        <div>
+            {#if out}
+            <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex" href="/" on:click="{() => window.location.href = '/'}">
+                ของที่จะออก{shopout()}
+                <svg fill="none" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path xmlns="http://www.w3.org/2000/svg" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#0D0D0D"></path>
+                </svg>
+            </a>
+            {:else}
+            <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex" href="/?out=true" on:click="{() => window.location.href = '/?out=true'}">
+                ของที่จะออก{shopout()}
+            </a>
+            {/if}
+        </div>
+        <div class="text-end">
+            <a class="bg-slate-50 hover:bg-slate-100 text-sm text-black font-bold p-2 mb-2 rounded inline-flex" href="https://www.fortnite.com/@boyalone99" target="_blank">
+                Favorite boyalone99 ใน Fortnite
+            </a>
+        </div>
+    </div>
     <div class="grid grid-cols-4 gap-4">
         {#each posts as post}
             {#if post.bundle}
@@ -199,8 +217,10 @@
                         <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 50%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
-                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">ลดไป {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm truncate font-bold text-black">ลดไป {post.regularPrice-post.finalPrice}</span>
+                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm truncate font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
