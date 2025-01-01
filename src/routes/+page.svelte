@@ -73,7 +73,7 @@
 
     function thaiDateAndShortYear(date) {
         //day/month/year format
-        return new Date(date).toLocaleDateString('th-TH').slice(0, 6) + '' + (new Date(date).getFullYear() + 543).toString().slice(2, 4);
+        return new Date(date).toLocaleDateString('th-TH').slice(0, 4) + '' + (new Date(date).getFullYear() + 543).toString().slice(2, 4);
     }
 
     function shopout() {
@@ -181,7 +181,7 @@
                                 <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 max-xl:hidden text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 sm:text-sm md:hidden text-lg font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
-                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden lg:text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 {/if}
                             </div>
                             <div class="absolute inset-x-0 bottom-0 py-4 rounded-b-lg backdrop-blur-md">
@@ -346,7 +346,7 @@
                                     <span class="justify-self-end max-md:hidden col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                     <span class="justify-self-end col-span-2 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {:else}
-                                    <span class="justify-self-end max-md:hidden col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-end max-md:hidden col-span-3 rounded-lg bg-white m-2 px-2 py-1 lg:text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                     <span class="justify-self-end col-span-3 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {/if}
                                 </div>
@@ -370,7 +370,7 @@
                                     <span class="justify-self-end max-md:hidden col-span-2 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                     <span class="justify-self-end col-span-2 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {:else}
-                                    <span class="justify-self-end max-md:hidden col-span-3 rounded-lg bg-white m-2 px-2 py-1 text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                    <span class="justify-self-end max-md:hidden col-span-3 rounded-lg bg-white m-2 px-2 py-1 lg:text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                     <span class="justify-self-end col-span-3 md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {/if}
                                 </div>
@@ -392,8 +392,9 @@
                             <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                     {#if post.banner?.backendValue == 'New'}
-                                    <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
-                                    <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                    <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm lg:text-lg truncate font-bold text-black">มาใหม่!</span>
+                                    <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm lg:hidden truncate font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
+                                    <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg max-lg:hidden truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {:else}
                                     <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                     {/if}
