@@ -247,8 +247,10 @@
                         <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '50' : '10'}%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
-                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice}</span>
+                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
+                                <span class="justify-self-end rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm truncate font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
                                 {:else}
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 <span class="justify-self-end col-span-2 rounded-lg bg-white m-2 px-2 py-1 md:hidden text-sm font-bold text-black">ออก {thaiDateAndShortYear(post.outDate)}</span>
