@@ -3,6 +3,7 @@
     import Carousel from 'svelte-carousel';
 
     const out = $page.url.searchParams.get('out');
+    let itemNoLayout
 
     async function getallfortniteskins() {
         // old
@@ -15,8 +16,12 @@
         data.data.entries.sort((a, b) => (b.sortPriority > a.sortPriority) ? 1 : -1);
         //order same rank by regularPrice
         data.data.entries.sort((a, b) => (a.regularPrice > b.regularPrice) ? 1 : -1);
+        //get item don't have layout to new array
+        itemNoLayout = data.data.entries.filter(item => !item.layout);
+        //remove data.data.entries don't have layout
+        data.data.entries = data.data.entries.filter(item => item.layout);
         //reorder data.data.entries by layout.rank
-        data.data.entries.sort((a, b) => (b.layout.rank > a.layout.rank) ? 1 : -1);
+        data.data.entries.sort((a, b) => b.layout && a.layout ? (b.layout.rank > a.layout.rank) ? 1 : -1 : -1);
         //remove all layout.name == 'Jam Tracks'
         data.data.entries = data.data.entries.filter(item => item.layout.name !== 'Jam Tracks' && item.layout.name !== 'OG Season Shop');
         console.log(data.data.entries);
@@ -32,10 +37,11 @@
                     data.data.entries[i].video = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].video.split('?')[0];
                 } else {
                     data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
-                    data.data.entries[i].video = data2.shop.filter(item => item.offerId == data.data.entries[i].offerId)[0].video.split('?')[0];
+                    data.data.entries[i].video = "";
                 }
             }
         } catch (error) {
+            console.log(error);
             //add "https://www.fortnite.com/item-shop?creator-code=boyalone99" to every data.data.entries
             for (let i = 0; i < data.data.entries.length; i++) {
                 data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
