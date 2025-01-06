@@ -460,17 +460,17 @@
                                 <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
                             </div>
-                            <img class="rounded-lg p-2" src={post.tracks? post.tracks[0].albumArt : ""} alt={post.tracks[0].title} />
+                            <img class="rounded-lg p-2" src={post.tracks? post.tracks[0].albumArt : ""} alt={post.tracks?post.tracks[0].title: ""} />
                             <div class="absolute inset-x-0 bottom-0 py-1 md:py-4 rounded-b-lg backdrop-blur-md">
                                 <span class="max-md:text-sm ml-4">
-                                    {post.tracks[0].title}
+                                    {post.tracks?post.tracks[0].title: ""}
                                 </span>
                                 <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                             </div>
                         </div>
                     {:else}
                         <div class="aspect-[1/1] md:aspect-[.627] rounded-lg" style="background-size: cover; background-position: top;">
-                            <img class="rounded-lg p-2" src={post.tracks? post.tracks[0].albumArt : ""} alt={post.tracks[0].title} />
+                            <img class="rounded-lg p-2" src={post.tracks? post.tracks[0].albumArt : ""} alt={post.tracks?post.tracks[0].title: ""} />
                             {post.tracks[0].title}
                         </div>
                     {/if}
