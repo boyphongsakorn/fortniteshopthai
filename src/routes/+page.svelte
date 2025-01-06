@@ -505,7 +505,7 @@
                                     </div>
                                 {/if}
                             </div> -->
-                            <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                            <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.instruments[0].images.large}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                     {#if post.banner?.backendValue == 'New'}
                                     <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
