@@ -23,13 +23,13 @@
         //order by layoutId
         data.data.entries.sort((a, b) => (a.layoutId > b.layoutId) ? 1 : -1);
         //get item don't have layout to new array
-        itemNoLayout = data.data.entries.filter(item => !item.layout);
+        //itemNoLayout = data.data.entries.filter(item => !item.layout);
         //remove data.data.entries don't have layout
-        data.data.entries = data.data.entries.filter(item => item.layout);
+        //data.data.entries = data.data.entries.filter(item => item.layout);
         //reorder data.data.entries by layout.rank
         data.data.entries.sort((a, b) => b.layout && a.layout ? (b.layout.rank > a.layout.rank) ? 1 : -1 : -1);
-        //remove all layout.name == 'Jam Tracks'
-        data.data.entries = data.data.entries.filter(item => item.layout.name !== 'Jam Tracks' && item.layout.name !== 'OG Season Shop');
+        //remove all layout.name == 'Jam Tracks' and 'OG Season Shop'
+        data.data.entries = data.data.entries.filter(item => item.layout ? item.layout.name != 'Jam Tracks' && item.layout.name != 'OG Season Shop' : true);
         console.log(data.data.entries);
         try {
             const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop', {signal : AbortSignal.timeout(12000)});
@@ -460,7 +460,7 @@
                                 <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                 {/if}
                             </div>
-                            <img class="rounded-lg p-2" src={post.tracks[0].albumArt} alt={post.tracks[0].title} />
+                            <img class="rounded-lg p-2" src={post.tracks? post.tracks[0].albumArt : ""} alt={post.tracks[0].title} />
                             <div class="absolute inset-x-0 bottom-0 py-1 md:py-4 rounded-b-lg backdrop-blur-md">
                                 <span class="max-md:text-sm ml-4">
                                     {post.tracks[0].title}
@@ -470,7 +470,7 @@
                         </div>
                     {:else}
                         <div class="aspect-[1/1] md:aspect-[.627] rounded-lg" style="background-size: cover; background-position: top;">
-                            <img class="rounded-lg p-2" src={post.tracks[0].albumArt} alt={post.tracks[0].title} />
+                            <img class="rounded-lg p-2" src={post.tracks? post.tracks[0].albumArt : ""} alt={post.tracks[0].title} />
                             {post.tracks[0].title}
                         </div>
                     {/if}
