@@ -536,34 +536,54 @@
                                     </div>
                                 {/if}
                             </div> -->
-                            <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.instruments[0].images.large}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
-                                <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-10 w-full">
-                                    {#if post.banner?.backendValue == 'New'}
-                                    <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
-                                    <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
-                                    {:else}
-                                    <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
-                                    {/if}
+                            {#if post.tracks}
+                                <div class="relative max-md:aspect-[1/1] max-md:col-span-2 h-full rounded-lg" style="background: linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: top;">
+                                    <div class="absolute grid justify-items-stretch inline-grid grid-cols-10 w-full">
+                                        {#if post.banner?.backendValue == 'New'}
+                                        <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
+                                        <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                        {:else}
+                                        <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                        {/if}
+                                    </div>
+                                    <img class="rounded-lg p-2" src={post.tracks? post.tracks[0].albumArt : ""} alt={post.tracks?post.tracks[0].title: ""} />
+                                    <div class="absolute inset-x-0 bottom-0 py-1 md:py-4 rounded-b-lg backdrop-blur-md">
+                                        <span class="max-md:text-sm ml-4">
+                                            {post.tracks?post.tracks[0].title: ""}
+                                        </span>
+                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                    </div>
                                 </div>
-                                <video autoplay muted loop class="min-w-full min-h-full object-cover object-top max-md:aspect-[1/1] rounded-lg">
-                                    <source src={post.video} type="video/mp4">
-                                    Your browser does not support HTML5 video.
-                                </video>
-                                <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
-                                    <span class="max-md:text-sm ml-4">
-                                        {#if post.brItems}
-                                            {post.brItems[0].name}
+                            {:else}
+                                <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.instruments ? post.instruments[0].images.large : post.brItems[0].images.icon}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-10 w-full">
+                                        {#if post.banner?.backendValue == 'New'}
+                                        <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
+                                        <span class="justify-self-end col-span-7 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
+                                        {:else}
+                                        <span class="justify-self-end col-span-10 rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                                         {/if}
-                                        {#if post.instruments}
-                                            {post.instruments[0].name}
-                                        {/if}
-                                        {#if post.legoKits}
-                                            {post.legoKits[0].name}
-                                        {/if}
-                                    </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                    </div>
+                                    <video autoplay muted loop class="min-w-full min-h-full object-cover object-top max-md:aspect-[1/1] rounded-lg">
+                                        <source src={post.video} type="video/mp4">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                    <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
+                                        <span class="max-md:text-sm ml-4">
+                                            {#if post.brItems}
+                                                {post.brItems[0].name}
+                                            {/if}
+                                            {#if post.instruments}
+                                                {post.instruments[0].name}
+                                            {/if}
+                                            {#if post.legoKits}
+                                                {post.legoKits[0].name}
+                                            {/if}
+                                        </span>
+                                        <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            {/if}
                         {/if}
                     {:else}
                         <div class="aspect-[1/1] md:aspect-[.627] rounded-lg" style="background-size: cover; background-position: top;">
