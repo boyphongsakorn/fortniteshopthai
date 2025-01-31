@@ -306,7 +306,11 @@
                     {:else}
                         <a class="relative col-span-2 md:col-span-4 w-full rounded-lg" href={post.webURL}>
                             <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
-                                <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                {#if post.banner?.backendValue == 'New'}
+                                    <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
+                                {:else}
+                                    <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
+                                {/if}
                                 <span class="justify-self-end max-md:hidden rounded-lg bg-white m-2 px-2 py-1 text-lg truncate font-bold text-black">อยู่จนถึงวันที่ {thaiDate(post.outDate)}</span>
                                 <span class="justify-self-end md:hidden rounded-lg bg-white m-2 px-2 py-1 text-sm truncate font-bold text-black">ออก {thaiDateShort(post.outDate)}</span>
                             </div>
@@ -320,7 +324,12 @@
                                 <span class="max-sm:text-sm ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
+                                <!--p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p-->
+                                {#if post.regularPrice-post.finalPrice > 0}
+                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice} <spin class="inline line-through">{post.regularPrice}</spin></p>
+                                {:else}
+                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
+                                {/if}
                             </div>
                         </a>
                         <!--div class="relative col-span-4 aspect-[1/.38625] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
