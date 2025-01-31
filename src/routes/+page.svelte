@@ -307,7 +307,7 @@
                         <a class="relative col-span-2 md:col-span-4 w-full rounded-lg" href={post.webURL}>
                             <div class="max-sm:hidden absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.banner?.backendValue == 'New'}
-                                    <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
+                                    <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg font-bold text-black">มาใหม่!</span>
                                 {:else}
                                     <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
                                 {/if}
