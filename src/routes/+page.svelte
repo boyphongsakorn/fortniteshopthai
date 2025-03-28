@@ -73,7 +73,7 @@
 
     function thaiDateAndShortYear(date) {
         //day/month/year format
-        return new Date(date).toLocaleDateString('th-TH').slice(0, 4) + '/' + (new Date(date).getFullYear() + 543).toString().slice(2, 4);
+        return new Date(date).toLocaleDateString('th-TH').slice(0, 3) + '/' + (new Date(date).getFullYear() + 543).toString().slice(2, 4);
     }
 
     function shopout() {
