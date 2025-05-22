@@ -29,7 +29,7 @@
         //reorder data.data.entries by layout.rank
         data.data.entries.sort((a, b) => b.layout && a.layout ? (b.layout.rank > a.layout.rank) ? 1 : -1 : -1);
         //remove all layout.name == 'Jam Tracks' and 'OG Season Shop'
-        data.data.entries = data.data.entries.filter(item => item.layout ? item.layout.name != 'Jam Tracks' && item.layout.name != 'OG Season Shop' : true);
+        data.data.entries = data.data.entries.filter(item => item.layout ? item.layout.name != 'Jam Tracks' && item.layout.name != 'OG Season Shop' && item.layout.name != 'Prove Your Power' : true);
         console.log(data.data.entries);
         try {
             const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop', {signal : AbortSignal.timeout(12000)});
@@ -80,9 +80,9 @@
     function shopout() {
         //if less 7 hours to 00:00 (UTC time) return วันนี้
         if (new Date().getUTCHours() >= 17) {
-            return 'วันนี้';
+            return 'วันนี้ (7 โมงเช้า)';
         } else {
-            return 'พรุ่งนี้';
+            return 'พรุ่งนี้ (7 โมงเช้า)';
         }
     }
 
@@ -401,7 +401,7 @@
                         {/if}
                     {:else}
                         {#if post.colors.color2}
-                            <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                            <a class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" href={post.webURL} style="background-image: url({post.brItems && innerWidth < 768 ? post.brItems[0].type.value == 'outfit' ? 'https://img.gs/fhcphvsghs/250x250,crop=0.5x0.2,quality=low/https://img.gs/fhcphvsghs/500x250,crop=top,quality=low/' : '' : ''}{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                     {#if post.banner?.backendValue == 'New'}
                                     <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm lg:text-lg truncate font-bold text-black">มาใหม่!</span>
@@ -429,7 +429,7 @@
                                     </span>
                                     <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{post.finalPrice}</p>
                                 </div>
-                            </div>
+                            </a>
                         {:else}
                             <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-10 w-full">
