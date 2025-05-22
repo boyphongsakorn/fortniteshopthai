@@ -118,6 +118,9 @@
             <a class="bg-slate-50 hover:bg-slate-100 text-sm text-black font-bold p-2 mb-2 rounded inline-flex" href="https://www.fortnite.com/@boyalone99" target="_blank">
                 Favorite boyalone99 ใน Fortnite
             </a>
+            <a class="bg-purple-50 hover:bg-purple-60 text-sm text-black font-bold p-2 mb-2 rounded inline-flex" href="https://www.fortnite.com/@boyalone99" target="_blank">
+                Favorite boyalone99 ใน Fortnite
+            </a>
         </div>
     </div>
     <div class="grid grid-cols-4 gap-4">
