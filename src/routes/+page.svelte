@@ -118,7 +118,7 @@
             <a class="bg-slate-50 hover:bg-slate-100 text-sm text-black font-bold p-2 mb-2 rounded inline-flex" href="https://fortnite.com/@boyalone99" target="_blank">
                 Favorite boyalone99 ใน Fortnite
             </a>
-            <a class="bg-purple-600 hover:bg-purple-500 text-sm text-black font-bold p-2 mb-2 rounded inline-flex" href="https://twitch.tv/boyalone99" target="_blank">
+            <a class="bg-purple-700 hover:bg-purple-600 text-sm font-bold p-2 mb-2 rounded inline-flex" href="https://twitch.tv/boyalone99" target="_blank">
                 ติดตาม boyalone99 บน Twitch
             </a>
         </div>
