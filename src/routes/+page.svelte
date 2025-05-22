@@ -86,6 +86,10 @@
         }
     }
 
+    function load() {
+        window.location.href = '';
+    }
+
     let innerWidth = 0
 </script>
 <svelte:window bind:innerWidth/>
@@ -612,7 +616,7 @@
     </div>
 </div>
 {:catch error}
-	<p style="color: red">{error.message}</p>
+	<p style="color: red">{error.message}</p> <button on:click={load}>โหลดใหม่</button>
 {/await}
 
 <!-- <div class="snowflakes" aria-hidden="true">
