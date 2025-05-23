@@ -45,6 +45,12 @@
                     data.data.entries[i].webURL = "https://www.fortnite.com/item-shop?creator-code=boyalone99";
                     data.data.entries[i].video = "";
                 }
+                //check data.data.entries[i].outDate is less than 24 hours add data.data.entries[i].outDateToday is true
+                if (new Date(data.data.entries[i].outDate).getTime() - new Date().getTime() < 24 * 60 * 60 * 1000) {
+                    data.data.entries[i].outDateToday = true;
+                } else {
+                    data.data.entries[i].outDateToday = false;
+                }
             }
         } catch (error) {
             console.log(error);
