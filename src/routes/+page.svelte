@@ -108,7 +108,7 @@
 {#await getallfortniteskins()}
 	<p>กำลังโหลดข้อมูล...</p>
 {:then posts}
-<div class="container mx-auto p-4 text-white">
+<div class="container max-w-screen-xl mx-auto p-4 text-white">
     <div class="grid grid-cols-2">
         <div>
             {#if out}
