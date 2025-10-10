@@ -138,7 +138,7 @@
             {#if post.bundle}
                 {#if post.tileSize == 'Size_1_x_1'}
                     {#if post.colors.color2}
-                        <a class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
@@ -161,7 +161,7 @@
                             </div>
                         </a>
                     {:else}
-                        <a class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 md:col-span-1 max-md:aspect-[1/1] aspect-[.627] rounded-lg" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                 {#if post.banner?.backendValue == 'New'}
                                 <span class="justify-self-start rounded-lg bg-yellow-300 m-2 px-2 py-1 text-lg font-bold text-black">มาใหม่!</span>
@@ -186,7 +186,7 @@
                     {/if}
                 {:else if post.tileSize == 'Size_2_x_1'}
                     {#if post.colors.color2}
-                        <a class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg h-full w-full" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg h-full w-full" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -210,7 +210,7 @@
                             </div>
                         </a>
                     {:else}
-                        <a class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg h-full w-full" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                        <a class="relative col-span-2 max-md:aspect-[1/1] aspect-[1/.76] rounded-lg h-full w-full" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -236,7 +236,7 @@
                     {/if}
                 {:else if post.tileSize == 'Size_3_x_1'}
                     {#if post.colors.color2}
-                        <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '50' : '10'}%;">
+                        <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '50' : '10'}%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -260,7 +260,7 @@
                             </div>
                         </a>
                     {:else}
-                        <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '50' : '10'}%;">
+                        <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '50' : '10'}%;">
                             <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                 {#if post.regularPrice-post.finalPrice > 0}
                                 <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -414,7 +414,7 @@
                         {/if}
                     {:else if post.tileSize == 'Size_3_x_1'}
                         {#if post.colors.color2}
-                            <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '10' : '10'}%;">
+                            <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '10' : '10'}%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                     {#if post.regularPrice-post.finalPrice > 0}
                                     <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -446,7 +446,7 @@
                                 </div>
                             </a>
                         {:else}
-                            <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '50' : '10'}%;">
+                            <a class="relative max-md:col-span-2 col-span-3 max-md:aspect-[1/1] aspect-[1/.516] rounded-lg" href={post.webURL} style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% {post.cars ? '50' : '10'}%;">
                                 <div class="grid justify-items-stretch inline-grid grid-cols-2 w-full">
                                     {#if post.regularPrice-post.finalPrice > 0}
                                     <span class="justify-self-start rounded-lg bg-white m-2 px-2 py-1 max-md:hidden text-lg truncate font-bold text-black">ลด {post.regularPrice-post.finalPrice} V-Bucks</span>
@@ -510,7 +510,7 @@
                                 </div>
                             </a>
                         {:else}
-                            <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url({post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                            <div class="relative h-full rounded-lg max-md:col-span-2 aspect-[1/1] md:aspect-[.627]" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{post.newDisplayAsset.renderImages[0].image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
                                 <div class="absolute z-10 inset-x-0 top-0 grid justify-items-stretch inline-grid grid-cols-10 w-full">
                                     {#if post.banner?.backendValue == 'New'}
                                     <span class="justify-self-start col-span-3 rounded-lg bg-yellow-300 m-2 px-2 py-1 text-sm md:text-lg truncate font-bold text-black">มาใหม่!</span>
