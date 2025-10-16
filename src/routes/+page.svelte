@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import Carousel from 'svelte-carousel';
+    import Swal from 'sweetalert2'
 
     const out = $page.url.searchParams.get('out');
     let itemNoLayout
@@ -97,6 +98,31 @@
     }
 
     let innerWidth = 0
+
+    function loading() {
+        let timerInterval;
+        Swal.fire({
+            title: "กำลังโหลดข้อมูล...",
+            // html: "I will close in <b></b> milliseconds.",
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+                // const timer = Swal.getPopup().querySelector("b");
+                // timerInterval = setInterval(() => {
+                //     timer.textContent = `${Swal.getTimerLeft()}`;
+                // }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
+        });
+    }
 </script>
 <svelte:window bind:innerWidth/>
 
@@ -106,7 +132,8 @@
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p-->
 
 {#await getallfortniteskins()}
-	<p>กำลังโหลดข้อมูล...</p>
+	<!-- <p>กำลังโหลดข้อมูล...</p> -->
+    {loading()}
 {:then posts}
 <div class="container max-w-screen-xl mx-auto p-4 text-white">
     <div class="grid grid-cols-2">
