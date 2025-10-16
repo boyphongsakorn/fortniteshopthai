@@ -65,6 +65,7 @@
             //get only item that outDate is today by outDate == today
             data.data.entries = data.data.entries.filter(item => item.outDate.slice(0, 10) == new Date().toISOString().slice(0, 10));
         }
+        Swal.close();
         return data.data.entries;
     }
 
@@ -98,30 +99,36 @@
     }
 
     let innerWidth = 0
+    let timerInterval;
 
     function loading() {
-        let timerInterval;
-        Swal.fire({
-            title: "กำลังโหลดข้อมูล...",
-            // html: "I will close in <b></b> milliseconds.",
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: () => {
-                Swal.showLoading();
-                // const timer = Swal.getPopup().querySelector("b");
-                // timerInterval = setInterval(() => {
-                //     timer.textContent = `${Swal.getTimerLeft()}`;
-                // }, 100);
-            },
-            willClose: () => {
-                clearInterval(timerInterval);
-            }
-        }).then((result) => {
-            /* Read more about handling dismissals below */
-            if (result.dismiss === Swal.DismissReason.timer) {
-                console.log("I was closed by the timer");
-            }
-        });
+        try {
+            Swal.fire({
+                title: "กำลังโหลดข้อมูล...",
+                // html: "I will close in <b></b> milliseconds.",
+                // timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    // const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                    Swal.hideLoading();
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                    Swal.hideLoading();
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 </script>
 <svelte:window bind:innerWidth/>
@@ -133,7 +140,7 @@
 
 {#await getallfortniteskins()}
 	<!-- <p>กำลังโหลดข้อมูล...</p> -->
-    <!-- {loading()} -->
+    {loading()}
 {:then posts}
 <div class="container max-w-screen-xl mx-auto p-4 text-white">
     <div class="grid grid-cols-2">
