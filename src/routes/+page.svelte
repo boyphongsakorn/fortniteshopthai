@@ -4,6 +4,7 @@
     import Swal from 'sweetalert2'
 
     const out = $page.url.searchParams.get('out');
+    const order = $page.url.searchParams.get('order');
     let itemNoLayout
 
     async function getallfortniteskins() {
@@ -64,6 +65,10 @@
         if (out) {
             //get only item that outDate is today by outDate == today
             data.data.entries = data.data.entries.filter(item => item.outDate.slice(0, 10) == new Date().toISOString().slice(0, 10));
+        }
+        if (order) {
+            //order by outDate ascending
+            data.data.entries.sort((a, b) => (a.outDate > b.outDate) ? 1 : -1);
         }
         Swal.close();
         return data.data.entries;
@@ -157,6 +162,9 @@
                 ของที่จะออก{shopout()}
             </a>
             {/if}
+            <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex truncate" href="/?out=true" on:click="{() => window.location.href = '/?order=true'}">
+                เรียงตามวันที่จะออก
+            </a>
         </div>
         <div class="text-end">
             <a class="bg-slate-50 hover:bg-slate-100 text-sm text-black font-bold p-2 mb-2 rounded inline-flex max-sm:hidden" href="https://fortnite.com/@boyalone99" target="_blank">
