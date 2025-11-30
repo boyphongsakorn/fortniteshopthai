@@ -28,7 +28,7 @@
 
     // Currency icon URLs
     const vbuckIcon = 'https://fortnite-api.com/images/vbuck.png';
-    const bahtIcon = 'https://cdn-icons-png.flaticon.com/512/5765/5765709.png';
+    const bahtIcon = 'https://raw.githubusercontent.com/boyphongsakorn/fortniteshopthai/refs/heads/main/static/baht.png';
     
     $: currencyIcon = showBaht ? bahtIcon : vbuckIcon;
 
