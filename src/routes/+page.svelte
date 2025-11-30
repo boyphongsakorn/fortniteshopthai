@@ -21,10 +21,16 @@
 
     function formatPrice(vbucks) {
         if (showBaht) {
-            return vbucksToBaht(vbucks) + ' ฿';
+            return vbucksToBaht(vbucks);
         }
         return vbucks;
     }
+
+    // Currency icon URLs
+    const vbuckIcon = 'https://fortnite-api.com/images/vbuck.png';
+    const bahtIcon = 'https://cdn-icons-png.flaticon.com/512/5765/5765709.png';
+    
+    $: currencyIcon = showBaht ? bahtIcon : vbuckIcon;
 
     async function getallfortniteskins() {
         // old
@@ -229,9 +235,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -252,9 +258,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -278,9 +284,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -302,9 +308,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -328,9 +334,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -352,9 +358,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -377,7 +383,7 @@
                                 <span class="max-sm:text-sm ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                             </div>
                         </a>
                         <!--div class="relative col-span-4 aspect-[1/.38625] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
@@ -389,7 +395,7 @@
                                 <span class="ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                             </div>
                         </div-->
                     {:else}
@@ -413,11 +419,11 @@
                                 <span class="max-sm:text-sm ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <!--p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p-->
+                                <!--p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p-->
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -430,7 +436,7 @@
                                 <span class="ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                             </div>
                         </div-->
                     {/if}
@@ -459,7 +465,7 @@
                                             {post.instruments[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </a>
                         {:else}
@@ -483,7 +489,7 @@
                                             {post.instruments[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </a>
                         {/if}
@@ -514,9 +520,9 @@
                                         {/if}
                                     </span>
                                     {#if post.regularPrice-post.finalPrice > 0}
-                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                     {:else}
-                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     {/if}
                                 </div>
                             </a>
@@ -546,9 +552,9 @@
                                         {/if}
                                     </span>
                                     {#if post.regularPrice-post.finalPrice > 0}
-                                    <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                    <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                     {:else}
-                                    <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     {/if}
                                 </div>
                             </a>
@@ -581,7 +587,7 @@
                                             {post.legoKits[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </a>
                         {:else}
@@ -610,7 +616,7 @@
                                             {post.legoKits[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </div>
                         {/if}
@@ -633,7 +639,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.tracks?post.tracks[0].title: ""}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {:else}
@@ -662,7 +668,7 @@
                                                 {post.legoKits[0].name}
                                             {/if}
                                         </span>
-                                        <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {/if}
@@ -682,7 +688,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.tracks?post.tracks[0].title: ""}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 {:else}
                                     <div class="absolute grid justify-items-stretch inline-grid grid-cols-10 w-full">
@@ -698,7 +704,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.instruments[0].name}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 {/if}
                             </div> -->
@@ -717,7 +723,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.tracks?post.tracks[0].title: ""}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {:else}
@@ -746,7 +752,7 @@
                                                 {post.legoKits[0].name}
                                             {/if}
                                         </span>
-                                        <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src="https://fortnite-api.com/images/vbuck.png" />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {/if}
