@@ -183,7 +183,7 @@
     </div>
     <div class="grid grid-cols-4 gap-4">
         {#each posts as post, i}
-            {#if i === 0 || posts[i - 1].layoutId !== post.layoutId}
+            {#if i === 0 || (posts[i - 1].layoutId !== post.layoutId && posts[i - 1].layout?.name !== post.layout?.name)}
                 {#if post.layout?.name}
                     <h2 class="col-span-4 text-2xl font-bold mt-4 mb-2">{post.layout.name}</h2>
                 {/if}
