@@ -182,7 +182,12 @@
         </div>
     </div>
     <div class="grid grid-cols-4 gap-4">
-        {#each posts as post}
+        {#each posts as post, i}
+            {#if i === 0 || posts[i - 1].layoutId !== post.layoutId}
+                {#if post.layout?.name}
+                    <h2 class="col-span-4 text-2xl font-bold mt-4 mb-2">{post.layout.name}</h2>
+                {/if}
+            {/if}
             {#if post.bundle}
                 {#if post.tileSize == 'Size_1_x_1'}
                     {#if post.colors.color2}
