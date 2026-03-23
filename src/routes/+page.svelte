@@ -9,13 +9,23 @@
     let showBaht = false;
 
     // V-Bucks to Thai Baht conversion rates
-    // 1000 V-Bucks = 199 Baht, 2800 = 500, 5000 = 799, 13500 = 1999
-    // Calculate rate: approximately 0.199 baht per V-Buck for small amounts
+    // 800 V-Bucks = 199 Baht, 2400 = 500, 4500 = 799, 12500 = 1999
+    // Calculate rate: approximately 0.24875 baht per V-Buck for small amounts
     // But we use tiered pricing based on best value
     function vbucksToBaht(vbucks) {
         if (vbucks <= 0) return 0;
-        // Use the rate from 1000 V-Bucks pack as base (199/1000 = 0.199)
-        const rate = 199 / 800;
+
+        let rate;
+        if (vbucks >= 12500) {
+            rate = 1999 / 12500;
+        } else if (vbucks >= 4500) {
+            rate = 799 / 4500;
+        } else if (vbucks >= 2400) {
+            rate = 500 / 2400;
+        } else {
+            rate = 199 / 800;
+        }
+
         return Math.ceil(vbucks * rate);
     }
 
