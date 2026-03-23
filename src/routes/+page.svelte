@@ -15,7 +15,7 @@
     function vbucksToBaht(vbucks) {
         if (vbucks <= 0) return 0;
         // Use the rate from 1000 V-Bucks pack as base (199/1000 = 0.199)
-        const rate = 199 / 1000;
+        const rate = 199 / 800;
         return Math.ceil(vbucks * rate);
     }
 
