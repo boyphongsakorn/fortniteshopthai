@@ -66,7 +66,7 @@
         //reorder data.data.entries by layout.rank
         data.data.entries.sort((a, b) => b.layout && a.layout ? (b.layout.rank > a.layout.rank) ? 1 : -1 : -1);
         //remove all layout.name == 'Jam Tracks' and 'OG Season Shop'
-        data.data.entries = data.data.entries.filter(item => item.layout ? item.layout.name != 'Jam Tracks' && item.layout.name != 'OG Season Shop' && item.layout.name != 'Prove Your Power' : item.layoutId != 'alc.0' ? false : true);
+        data.data.entries = data.data.entries.filter(item => item.layout ? item.layout.name != 'Jam Tracks' && item.layout.name != 'OG Season Shop' && item.layout.name != 'Prove Your Power' : item.layoutId == 'alc.0' ? false : true);
         console.log(data.data.entries);
         try {
             const res2 = await fetch('https://localpost.teamquadb.in.th/fortniteitemshop', {signal : AbortSignal.timeout(12000)});
