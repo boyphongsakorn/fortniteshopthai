@@ -16,9 +16,11 @@
         if (vbucks <= 0) return 0;
 
         let rate;
-        if (vbucks >= 12500) {
+        //if (vbucks >= 12500) {
+        if (vbucks >= 4500+((12500-4500)/2)) {
             rate = 1999 / 12500;
-        } else if (vbucks >= 4500) {
+        //} else if (vbucks >= 4500) {
+        } else if (vbucks >= 2400+((4500-2400)/2) && vbucks < 4500) {
             rate = 799 / 4500;
         } else if (vbucks >= 2400) {
             rate = 500 / 2400;
