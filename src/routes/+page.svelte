@@ -394,9 +394,9 @@
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
                                 {#each post.newDisplayAsset.renderImages as bgimage}
-                                    <!-- <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
-                                    </div> -->
-                                    <div class="relative aspect-[1/1] md:aspect-[1/.38625] rounded-lg"
+                                    <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    </div>
+                                    <!-- <div class="relative aspect-[1/1] md:aspect-[1/.38625] rounded-lg"
                                         style="background: linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%);">
 
                                         <img
@@ -405,7 +405,7 @@
                                             class="absolute bottom-0 left-0 right-0 w-full"
                                             style="height: auto; top: auto;"
                                         />
-                                    </div>
+                                    </div> -->
                                 {/each}
                             </Carousel>
                             <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
@@ -440,9 +440,9 @@
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
                                 {#each post.newDisplayAsset.renderImages as bgimage}
-                                    <!-- <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
-                                    </div> -->
-                                    <div class="relative aspect-[1/1] md:aspect-[1/.38625] rounded-lg"
+                                    <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    </div>
+                                    <!-- <div class="relative aspect-[1/1] md:aspect-[1/.38625] rounded-lg"
                                         style="background: linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%);">
 
                                         <img
@@ -451,7 +451,7 @@
                                             class="absolute bottom-0 left-0 right-0 w-full"
                                             style="height: auto; top: auto;"
                                         />
-                                    </div>
+                                    </div> -->
                                 {/each}
                             </Carousel>
                             <div class="absolute inset-x-0 bottom-0 max-md:py-1 py-4 rounded-b-lg backdrop-blur-md">
