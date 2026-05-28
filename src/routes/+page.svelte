@@ -7,6 +7,7 @@
     const order = $page.url.searchParams.get('order');
     let itemNoLayout
     let showBaht = false;
+    let showInfo = false;
 
     // V-Bucks to Thai Baht conversion rates
     // 800 V-Bucks = 199 Baht, 2400 = 500, 4500 = 799, 12500 = 1999
@@ -202,8 +203,14 @@
             <a class="bg-blue-500 hover:bg-blue-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex truncate" href="/?out=true" on:click="{() => window.location.href = '/?order=true'}">
                 เรียงตามวันที่จะออก
             </a>
+            <!-- <button class="bg-green-500 hover:bg-green-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex truncate" on:click="{() => showBaht = !showBaht}">
+                {showBaht ? '฿ บาท → V-Bucks' : 'V-Bucks → ฿ บาท'}
+            </button> -->
             <button class="bg-green-500 hover:bg-green-700 text-sm text-white font-bold p-2 mb-2 rounded inline-flex truncate" on:click="{() => showBaht = !showBaht}">
                 {showBaht ? '฿ บาท → V-Bucks' : 'V-Bucks → ฿ บาท'}
+            </button>
+            <button class="bg-gray-700 hover:bg-gray-600 text-sm text-white font-bold p-2 mb-2 rounded inline-flex truncate" on:click="{() => showInfo = true}" aria-label="ข้อมูลการแปลงราคา">
+                ⓘ
             </button>
         </div>
         <div class="text-end">
@@ -387,7 +394,17 @@
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
                                 {#each post.newDisplayAsset.renderImages as bgimage}
-                                    <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    <!-- <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    </div> -->
+                                    <div class="relative aspect-[1/1] md:aspect-[1/.38625] rounded-lg"
+                                        style="background: linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%);">
+
+                                        <img
+                                            src="https://img.gs/fhcphvsghs/quality=low/{bgimage.image}"
+                                            alt=""
+                                            class="absolute bottom-0 left-0 right-0 w-full"
+                                            style="height: auto; top: auto;"
+                                        />
                                     </div>
                                 {/each}
                             </Carousel>
@@ -423,7 +440,17 @@
                             </div>
                             <Carousel let:loaded autoplay dots={false} arrows={false} swiping={false} pauseOnFocus>
                                 {#each post.newDisplayAsset.renderImages as bgimage}
-                                    <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    <!-- <div class="aspect-[1/1] md:aspect-[1/.38625] rounded-lg" style="background-image: url(https://img.gs/fhcphvsghs/quality=low/{bgimage.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
+                                    </div> -->
+                                    <div class="relative aspect-[1/1] md:aspect-[1/.38625] rounded-lg"
+                                        style="background: linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color3} 100%);">
+
+                                        <img
+                                            src="https://img.gs/fhcphvsghs/quality=low/{bgimage.image}"
+                                            alt=""
+                                            class="absolute bottom-0 left-0 right-0 w-full"
+                                            style="height: auto; top: auto;"
+                                        />
                                     </div>
                                 {/each}
                             </Carousel>
@@ -780,6 +807,36 @@
         {/each}
     </div>
 </div>
+{#if showInfo}
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" on:click|self="{() => showInfo = false}">
+    <div class="bg-white text-black rounded-xl p-6 max-w-sm w-full mx-4 shadow-xl">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold">การคำนวณ V-Bucks → บาท</h2>
+            <button class="text-gray-500 hover:text-black" on:click="{() => showInfo = false}">✕</button>
+        </div>
+        <p class="text-sm text-gray-500 mb-3">เว็บไซต์ใช้อัตราแปลงตามแพ็กเกจ V-Bucks ของ Epic Games ดังนี้</p>
+        <div class="space-y-2 text-sm">
+            <a href="https://store.epicgames.com/p/fortnite--800-v-bucks-core" target="_blank" class="flex justify-between bg-green-50 rounded-lg px-3 py-2 hover:bg-green-100 no-underline">
+                <span class="text-green-800">แพ็ก 800 V-Bucks</span>
+                <span class="font-bold text-green-900">199 ฿ <span class="font-normal text-xs">(≈ 0.249 ฿/V-Buck)</span></span>
+            </a>
+            <a href="https://store.epicgames.com/p/fortnite--2400-v-bucks-core" target="_blank" class="flex justify-between bg-blue-50 rounded-lg px-3 py-2 hover:bg-blue-100 no-underline">
+                <span class="text-blue-800">แพ็ก 2,400 V-Bucks</span>
+                <span class="font-bold text-blue-900">500 ฿ <span class="font-normal text-xs">(≈ 0.208 ฿/V-Buck)</span></span>
+            </a>
+            <a href="https://store.epicgames.com/p/fortnite--4500-v-bucks-core" target="_blank" class="flex justify-between bg-purple-50 rounded-lg px-3 py-2 hover:bg-purple-100 no-underline">
+                <span class="text-purple-800">แพ็ก 4,500 V-Bucks</span>
+                <span class="font-bold text-purple-900">799 ฿ <span class="font-normal text-xs">(≈ 0.178 ฿/V-Buck)</span></span>
+            </a>
+            <a href="https://store.epicgames.com/p/fortnite--12500-v-bucks" target="_blank" class="flex justify-between bg-yellow-50 rounded-lg px-3 py-2 hover:bg-yellow-100 no-underline">
+                <span class="text-yellow-800">แพ็ก 12,500 V-Bucks</span>
+                <span class="font-bold text-yellow-900">1,999 ฿ <span class="font-normal text-xs">(≈ 0.160 ฿/V-Buck)</span></span>
+            </a>
+        </div>
+        <p class="text-xs text-gray-400 mt-4 leading-relaxed">ระบบเลือกอัตราที่ใกล้เคียงกับจำนวน V-Bucks ของสินค้ามากที่สุด โดยใช้จุดกึ่งกลางระหว่างแต่ละแพ็กเป็นเกณฑ์แบ่ง และปัดราคาขึ้นเสมอ (Math.ceil)</p>
+    </div>
+</div>
+{/if}
 {:catch error}
 	<p style="color: red">{error.message}</p> <button on:click={load}>โหลดใหม่</button>
 {/await}
