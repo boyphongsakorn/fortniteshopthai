@@ -39,6 +39,11 @@
         return vbucks;
     }
 
+    function priceTooltip(vbucks) {
+        if (showBaht || !vbucks) return '';
+        return `ประมาณ ${vbucksToBaht(vbucks)} บาท`;
+    }
+
     // Currency icon URLs
     const vbuckIcon = 'https://fortnite-api.com/images/vbuck.png';
     const bahtIcon = 'https://raw.githubusercontent.com/boyphongsakorn/fortniteshopthai/refs/heads/main/static/baht.png';
@@ -174,6 +179,31 @@
         }
     }
 </script>
+<style>
+.price-tooltip {
+  position: relative;
+  display: block;
+  margin-top: 0.3rem;
+}
+.price-tooltip[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 0.4rem);
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.35rem;
+  transform: translateY(-0.25rem);
+  z-index: 50;
+  pointer-events: none;
+}
+.price-tooltip[data-tooltip='']::after {
+  content: none;
+}
+</style>
 <svelte:window bind:innerWidth/>
 
 
@@ -254,9 +284,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-sm md:text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                <p class="text-sm md:text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -277,9 +307,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -303,9 +333,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -327,9 +357,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -353,9 +383,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                <p class="text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -377,9 +407,9 @@
                                     {post.bundle.name}
                                 </span>
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -412,7 +442,7 @@
                                 <span class="max-sm:text-sm ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                             </div>
                         </a>
                         <!--div class="relative col-span-4 aspect-[1/.38625] rounded-lg" style="background-image: url({post.bundle.image}), linear-gradient(180deg, #{post.colors.color1} 0%, #{post.colors.color2} 50%, #{post.colors.color3} 100%); background-size: cover; background-position: 50% 10%;">
@@ -424,7 +454,7 @@
                                 <span class="ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                             </div>
                         </div-->
                     {:else}
@@ -458,11 +488,11 @@
                                 <span class="max-sm:text-sm ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <!--p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p-->
+                                <!--p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} title={priceTooltip(post.finalPrice)} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p-->
                                 {#if post.regularPrice-post.finalPrice > 0}
-                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                    <p class="text-sm md:text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                 {:else}
-                                    <p class="text-sm md:text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                    <p class="text-sm md:text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 {/if}
                             </div>
                         </a>
@@ -475,7 +505,7 @@
                                 <span class="ml-4">
                                     {post.bundle.name}
                                 </span>
-                                <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                <p class="text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                             </div>
                         </div-->
                     {/if}
@@ -504,7 +534,7 @@
                                             {post.instruments[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </a>
                         {:else}
@@ -528,7 +558,7 @@
                                             {post.instruments[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </a>
                         {/if}
@@ -559,9 +589,9 @@
                                         {/if}
                                     </span>
                                     {#if post.regularPrice-post.finalPrice > 0}
-                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                    <p class="text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                     {:else}
-                                    <p class="text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                    <p class="text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     {/if}
                                 </div>
                             </a>
@@ -591,9 +621,9 @@
                                         {/if}
                                     </span>
                                     {#if post.regularPrice-post.finalPrice > 0}
-                                    <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
+                                    <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)} <spin class="inline line-through">{formatPrice(post.regularPrice)}</spin></p>
                                     {:else}
-                                    <p class="max-sm:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-sm:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     {/if}
                                 </div>
                             </a>
@@ -626,7 +656,7 @@
                                             {post.legoKits[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </a>
                         {:else}
@@ -655,7 +685,7 @@
                                             {post.legoKits[0].name}
                                         {/if}
                                     </span>
-                                    <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                    <p class="max-md:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                 </div>
                             </div>
                         {/if}
@@ -678,7 +708,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.tracks?post.tracks[0].title: ""}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {:else}
@@ -707,7 +737,7 @@
                                                 {post.legoKits[0].name}
                                             {/if}
                                         </span>
-                                        <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {/if}
@@ -727,7 +757,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.tracks?post.tracks[0].title: ""}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 {:else}
                                     <div class="absolute grid justify-items-stretch inline-grid grid-cols-10 w-full">
@@ -743,7 +773,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.instruments[0].name}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 {/if}
                             </div> -->
@@ -762,7 +792,7 @@
                                         <span class="max-md:text-sm ml-4">
                                             {post.tracks?post.tracks[0].title: ""}
                                         </span>
-                                        <p class="max-md:text-sm text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {:else}
@@ -791,7 +821,7 @@
                                                 {post.legoKits[0].name}
                                             {/if}
                                         </span>
-                                        <p class="max-md:text-sm text-lg text-bold"><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
+                                        <p class="max-md:text-sm text-lg text-bold price-tooltip" title={priceTooltip(post.finalPrice)} data-tooltip={priceTooltip(post.finalPrice)}><img class="ml-4 w-[25px] inline" src={currencyIcon} />{formatPrice(post.finalPrice)}</p>
                                     </div>
                                 </div>
                             {/if}
